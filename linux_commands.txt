@@ -33,4 +33,6 @@ Commands learnt so far:
 32. man <command> -> give detailed information about the command and it's various use cases. 
                      eg. man gpasswd -> will give detailed overview of the command and its use cases.
 33. printenv -> this command will give all the envirnment varibales details.
+34. echo -e "hello\ndosto" -> it will print hello and dosto in two line \n denotes next line.
+35. echo -e "hello\tdosot" -> it will print hello and dost with a space between them. -e is envirnment.
   
