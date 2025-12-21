@@ -35,4 +35,4 @@ Commands learnt so far:
 33. printenv -> this command will give all the envirnment varibales details.
 34. echo -e "hello\ndosto" -> it will print hello and dosto in two line \n denotes next line.
 35. echo -e "hello\tdosot" -> it will print hello and dost with a space between them. -e is envirnment.
-  
+36. man zio -> Read about zip command, useful in backup  
