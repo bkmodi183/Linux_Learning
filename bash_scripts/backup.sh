@@ -2,7 +2,7 @@
 
 <<info
 
-This script will take periodic backups
+This script will take periodic backups and store them in the Backup folder on the local as well as replicate the same over S3.
 
 info
 
