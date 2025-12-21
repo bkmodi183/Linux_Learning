@@ -19,4 +19,13 @@ Commands learnt so far:
 19. groupdel groupname -> to delete the group
 20. getacl path(/home/Folder/file.txt) -> this command is used to check what are the permissions for a file directory or a user has.
 21. sudo usermod -aG group_name username -> used to add user into the group
-  
+22. ls -a -> to see the all folder including hidden
+23. ls -l -> to list the content with detailed information including file permission, size, time etc.
+24. sudo useradd -m <username> -> here this command is used to create a user and '-m' flag which create creates a userdirectory 
+                                  at home.
+25. cat /etc/passwd -> to see the user created
+26. cat /etc/group -> to see the groups created
+27. sudo groupadd <group-name> -> to create a new group
+28. sudo gpasswd <username> <groupname> -> Command is used to add a single user to a particular group
+29. sudo gpasswd -M <user1>,<user2>,...,<usern> <groupname> -> '-M' flag allows to add multiple user in a particular group at once.
+

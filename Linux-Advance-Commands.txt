@@ -1,0 +1,28 @@
+1. zcat -> to see the content of zip file or compressed file.
+2. head -> To list the top content of file.
+           eg. If you want to see the top 5 lines of a file. "head -n 5 file.txt" -> this will show the first five lines of the file. If we don't give the -n flag by default it will give 
+               10 lines. Here we have multiple flag like -c,-q,-v. Refer GeeksForGeeks for more info.
+3. tail -> Is used to display the last part of the file. 
+           eg. "tail -n 5 file.txt" -> it will display the last 5 lines of the file. 
+               It has many flags such as -n,-c,-q,-v, -f. Foe better understanding refer gfg
+4. tail -f -> The command "tail -f log.txt" is used to conituously monitor the log file in real-time. It will show you the lastes add on logs.
+5. wc -> Word Count commnd is used count the number of words in a file.
+         eg. wc myfile.txt -> this will give the number of lines, number of words, number of bytes.
+6. Hardlink and Softlink -> Here les's assume one eg. In our laptop we used to play a game let's say cricekt247. The file associated with the games are saved inside c/local-disk-c/games/cricket247/icon
+                            so every time when we want to play the game we don't ususally go to that path what we do is we create a shortcut icon of the game at the desktop. Here harlink and softlink 
+                            are doing the same but in different fashion. When we create a harlink then even if the files get ddeleted from the original path we'll be ablle to access the file via
+                            Hardlink which we created at the home. And in Softlink if we delete the source path then the softlink file also gets deleted. 
+7. Create a file in the path /home/ubuntu/DevOps/Folder1/cricket247.txt, now everytime we can't go to the path to access the file so what we gonna do is we'll be creating a link at the /ubuntu/ to
+   to access the file directly.
+  *  ln -s /home/ubuntu/DevOps/Folder1/cricket247.txt softlink-file-cricket247 -> Here ln is link and -s denotes the softlink, the path shows the file for which we're creating the soft link and the 
+                                                                                softlink-file-cricket247 denotes the custom name of the softlink file that will reflect at the /home/ubuntu/
+  * ls /home/ubuntu/DevOps/Folder1/cricket247.txt Hardlink-file -> This will create a hardlink to that file. Now even if the source file get deleted the hardlink will be there.
+8. ls -ltr -> Display more detailed description about the files and directories. With this we can see if there is any link created and for which file path it is refereing to.
+9. ls -l, ls -la -> Display the detailed description aboyt the files and directories in certain fashion.                         
+10. more -> This command is used to display the content of a file one at a time. "more file.txt". It has various flags. Refere gfg for more details.
+11. less -> It allows to vie the content of the file one at a time withoud opening it in an editor. There are various flags associated with this file. For more details refer to gfg.
+12. cut -> If you want a small portion of a file content this command is useful. echo "This is myfile" > file.txt
+           eg. cut -b 1 file.txt -> output  is: T  Here -b is bytes flags it staes cut the 1 byte form the file and displayed it as an output.
+               cut -b 1-4 file.txt -> output is: This Here the cut command cut the 1 to 4 bytes of the file content and displayed it as an output.
+13. tee -> reads the standard input and writes it to both the standard output and one or more files. 
+          eg. echo "This is file" | tee file.txt -> this will display the file content on shell as well saved the content in the text file.txt  
