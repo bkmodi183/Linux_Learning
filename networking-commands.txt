@@ -1,0 +1,8 @@
+1. ping <ip-address> -> Checks whether a host is reachable over the network and measures latency.. eg. ping google.com
+2. traceroute <ip/hostname> -> Shows the path (hops) packets take to reach the destination and where delays or failures occur.
+                               eg. traceroute google.com
+3. dig domain -> Queries DNS to get information like IP address, name servers, TTL, etc. eg. dig hcltech.com
+4. wget <url> -> Downloads files or content from the internet using HTTP/HTTPS/FTP.
+5. curl -> Transfers data to/from a server using multiple protocols (HTTP, HTTPS, FTP, etc.)
+           eg.curl https://example.com, curl -X GET https://api.example.com, curl -X POST https://api.example.com
+6. ifconfig -> used to view and configure network interfaces.
