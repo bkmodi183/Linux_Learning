@@ -10,3 +10,6 @@ else
 fi
 
 echo "seconnd argument $2"
+
+# $# -> will give the total number of argument passed.
+echo "The total number of argument passed is $#"

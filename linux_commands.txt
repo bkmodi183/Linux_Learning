@@ -32,4 +32,5 @@ Commands learnt so far:
 31. sudo userdel <username> -> To delete a user
 32. man <command> -> give detailed information about the command and it's various use cases. 
                      eg. man gpasswd -> will give detailed overview of the command and its use cases.
-33.  
+33. printenv -> this command will give all the envirnment varibales details.
+  
