@@ -1,0 +1,88 @@
+-----------------------------------------Linux User & Group Management: DevOps Setup------------------------------------------
+
+This file demonstrates how to create users, groups, grant sudo access, and restrict SSH login for a DevOps team on Linux.
+
+-----------------------------------------Linux User & Group Management: DevOps Setup------------------------------------------
+
+1.	Create a group:
+
+Creating a group for DevOps users with the name devops-group Command: sudo groupadd devops-group
+
+------------------------------------------------------------------------------------------------------------------------------
+
+2. Create users and assign them to the group: Create devops-user and set password
+
+Creating a devops-user and setting password 
+
+Commands:
+sudo useradd -m devops-user
+sudo passwd devops-user
+
+Adding devops-user to devops-group
+
+Command:
+sudo gpasswd -a devops-user devops-group
+
+Creating devops-tester user and setting password
+
+Commands:
+sudo useradd -m devops-tester
+sudo passwd devops-tester
+
+Adding devops-tester to devops-group
+
+Command:
+sudo usermod -aG devops-group devops-tester
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+3. Grant sudo access: Open sudoers file
+
+Commnds:
+sudo visudo
+
+Instead of giving individual users sudo access:
+
+devops-user ALL=(ALL) NOPASSWD:ALL
+devops-tester ALL=(ALL) NOPASSWD:ALL
+
+Grant sudo access to the entire group (recommended)
+
+Commnd:
+devops-group ALL=(ALL) NOPASSWD:ALL
+
+Now all users in devops-group automatically have sudo privileges.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+4. Restrict SSH access
+
+Open SSH configuration file
+
+Command:
+sudo nano /etc/ssh/sshd_config
+
+
+Restrict SSH login
+
+Better approach: allow only the devops-group
+
+Command
+AllowGroups devops-group
+
+Restart SSH to apply changes
+
+Command:
+sudo systemctl restart ssh
+
+Now, Only users in devops-group can log in via SSH. Individual users outside this group will be blocked.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+You can switch user and check
+
+Commands:
+su - devops-user
+whoami
+
+------------------------------------------------------------------------------------------------------------------------------
