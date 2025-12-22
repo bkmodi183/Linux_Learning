@@ -35,4 +35,12 @@ Commands learnt so far:
 33. printenv -> this command will give all the envirnment varibales details.
 34. echo -e "hello\ndosto" -> it will print hello and dosto in two line \n denotes next line.
 35. echo -e "hello\tdosot" -> it will print hello and dost with a space between them. -e is envirnment.
-36. man zio -> Read about zip command, useful in backup  
+36. man zio -> Read about zip command, useful in backup
+37. df -h -> Check disk space in Human-readable format
+38. top -> Monitor CPU, memory, real time running processes 
+39. ps -> List running processes and Can filter with grep to see specific process.
+40. ps aux -> here 'aux' is  a flag which where;
+       a denotes show all the processes of all the users. Without a it will show only current user/session processes
+       u denotes Show the user/owner of the process and extra info like CPU%, MEM%, start time, etc.Makes the output “user-oriented”        with columns like USER, %CPU, %MEM.
+       x Show processes that don’t have a controlling terminal. Includes background daemons/services, which a alone might not show.
+
