@@ -1,0 +1,40 @@
+1.   man grep
+2.   grep -i "authentication error"
+3.   grep -i "authentication failure" app.log 
+4.   grep -i "Authentication failure" app.log 
+5.   grep -i "Authentication Failure" app.log 
+6.   grep "Authentication Failure" app.log 
+7.   grep "Authentication failure" app.log 
+8.   grep -i "authentication failure" app.log | head
+9.   grep -i "authentication failure" app.log | head -n 5
+10.  grep -i "authentication failure" app.log | tail
+11.  grep -i "authentication failure" app.log | tail -n 2
+12.  awk '{print}' app.log
+13.  awk '/authentication failure/ {print}' app.log
+14.  awk '/authentication failure/ {print}' app.log | head
+15.  awk '/authentication failure/ {print $1,$2}' app.log | head
+16.  awk '/authentication failure/ {print $1,$2,$3}' app.log | head
+17.  awk '/authentication failure/ {print $1,$2,$3}' app.log | head
+18.  awk '/authentication failure/ {print $1,$2,$3,$4}' app.log | head
+19.  awk '/authentication failure/ {print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17}' app.log | head
+20.  awk '/authentication failure/ {print $1,$2,,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17}' app.log | head
+21.  awk '/authentication failure/ {print $1,$2,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17}' app.log | head
+22.  awk '/authentication failure/ {print $1,$2,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17}' app.log | head
+23.  awk '/authentication failure/ {print $1,$2,$13,$14,$15,$16,$17}' app.log | head
+24.  awk '/authentication failure/ {print $1,$2,$13,$14,$15,$16,$17}' app.log
+25.  awk '/authentication failure/ {print $1,$2,$14,$15,$16,$17}' app.log
+26.  awk '/authentication failure/ {print $1,$2,$14,$15,$16}' app.log
+27.  awk '/authentication failure/ {if ($1 == "Jul" && ($2 == "26")) print $1,$2,$14,$15,$16}' app.log
+28.  awk '/authentication failure/ {if ($1 == "Jul" && ($2 == "26")) print $1,$2,$3,$12,$13,$14,$15,$16}' app.log
+29.  awk '/authentication failure/ {if ($1 == "Jul" && ($2 == "26")) print $12,$13,$14,$15,$16}' app.log
+30.  awk '/authentication failure/ {if ($1 == "Jul" && ($2 == "26")) print $14,$15,$16}' app.log
+31.  awk '/authentication failure/ {if ($1 == "Jul" && ($2 == "26")) print $12,$14,$15,$16}' app.log
+32.  awk '/authentication failure/ {if ($1 == "Jul" && ($2 == "26")) print $13,$14,$15,$16}' app.log
+33.  awk '/authentication failure/ {if ($1 == "Jul" && ($2 == "26")) print $13,$14,$15,$16}' app.log > auth_failure_ips.txt
+34.  sed  "s/user/username" auth_failure_ips.txt
+35.  sed  "s/user/username/g" auth_failure_ips.txt
+36.  sed  "s/rhost/IP-Address/g" auth_failure_ips.txt -> to change the rhost with IP-Address in the file. s denotes string which 
+                                                         to be change and /g denotes globally
+37.  sed  "s/rhost/ip/g" auth_failure_ips.txt -> to change the string rhost with ip globally
+38.  sed  "s/rhost/ip/g" auth_failure_ips.txt | uniq -> to sort the data uniquely
+39. find . -name app.log -> to check whether the file app.log present in the current directory or not. (.) denotes current directory
