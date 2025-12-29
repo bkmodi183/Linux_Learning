@@ -28,7 +28,8 @@ Commands learnt so far:
 27. sudo groupadd <group-name> -> to create a new group
 28. sudo gpasswd <username> <groupname> -> Command is used to add a single user to a particular group
 29. sudo gpasswd -M <user1>,<user2>,...,<usern> <groupname> -> '-M' flag allows to add multiple user in a particular group at once.
-30. sudo usermod -aG <groupname> <username> -> Another way to append an existing user to a particular group.                             'a' flag means append the user and 'G' denotes group. Collectivty 'aG' denotes appends the user to the group G.
+30. sudo usermod -aG <groupname> <username> -> Another way to append an existing user to a particular group.                             
+    'a' flag means append the user and 'G' denotes group. Collectivty 'aG' denotes appends the user to the group G.
 31. sudo userdel <username> -> To delete a user
 32. man <command> -> give detailed information about the command and it's various use cases. 
                      eg. man gpasswd -> will give detailed overview of the command and its use cases.
@@ -41,6 +42,9 @@ Commands learnt so far:
 39. ps -> List running processes and Can filter with grep to see specific process.
 40. ps aux -> here 'aux' is  a flag which where;
        a denotes show all the processes of all the users. Without a it will show only current user/session processes
-       u denotes Show the user/owner of the process and extra info like CPU%, MEM%, start time, etc.Makes the output “user-oriented”        with columns like USER, %CPU, %MEM.
+       u denotes Show the user/owner of the process and extra info like CPU%, MEM%, start time, etc.Makes the output “user-oriented”        
+       with columns like USER, %CPU, %MEM.
        x Show processes that don’t have a controlling terminal. Includes background daemons/services, which a alone might not show.
+41. xargs: Converts multi-line output into one single line. Replaces newlines with spaces
+    eg. free -h | xargs,  df-h | xargs,  free -h | xargs | $10/$8
 
