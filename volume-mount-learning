@@ -1,1 +1,114 @@
+---------------------------------------------------------------------------------------------------------------------------------------
 
+Elastic Block Store (EBS) works with Linux Logical Volume Manager (LVM) to provide flexible, 
+dynamically resizable storage on AWS EC2 instances.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+LVM (Logical Volume Manager)
+
+          +---------------------------+
+          |       Volume Group       |   (VG: total 36G)
+          |           vg0            |
+          +---------------------------+
+            ^           ^           ^
+            |           |           |
+        +-------+   +-------+   +-------+
+        | PV1   |   | PV2   |   | PV3   |
+        | 10G   |   | 12G   |   | 14G   |
+        +-------+   +-------+   +-------+
+          Physical     Physical     Physical
+          Volume       Volume       Volume
+
+From the Volume Group (vg0 = 36G), create Logical Volumes:
+
+          +---------------------------+
+          |       Volume Group       |
+          |           vg0            |
+          +---------------------------+
+            |                   |
+            |                   |
+        +--------+         +--------+
+        |  LV1   |         |  LV2   |
+        |  10G   |         |  20G   |   (example sizes)
+        +--------+         +--------+
+       Logical Volume     Logical Volume
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Basics: EBS and LVM
+
+- EBS stands for Elastic Block Store; it provides block storage volumes that can be attached to EC2 instances.
+- LVM stands for Logical Volume Manager; it sits on top of block devices and lets you create flexible logical 
+  volumes from physical storage.
+- Core LVM components:  
+  - Physical Volumes (PV): actual disks or EBS volumes, for example three disks of 10G, 12G, and 14G.  
+  - Volume Group (VG): a pooled storage group, for example combining those three disks into a 36G VG.  
+  - Logical Volumes (LV): virtual partitions carved out of a VG, for example LV1 and LV2 created from that 36G pool.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Converting EBS Volumes to LVM PVs
+
+- After creating and attaching EBS volumes to the EC2 instance, convert them into LVM physical volumes so they can be managed by LVM.
+- Become root and start the LVM shell:  
+  - sudo su  
+  - lvm  
+- Useful initial commands:  
+  - lsblk – lists all block devices on the system.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Creating PVs, VG, and LV
+
+- Initialize attached disks as physical volumes:  
+  - pvcreate /dev/xvdf /dev/xvdg /dev/xvdh (example devices).
+- List physical volumes:  
+  - pvs – shows all PVs present.[6][8]
+- Create a volume group from PVs:  
+  - vgcreate bm-vg /dev/xvdf /dev/xvdg – creates VG bm-vg from two disks; total VG size is the sum of PV sizes.
+- List volume groups:  
+  - vgs – lists all VGs.
+- Create a logical volume from the VG:  
+  - lvcreate -L 10G -n bm-lv bm-vg – creates a 10G LV named bm-lv in VG bm-vg.
+- Display details:  
+  - pvdisplay – detailed information about each PV.  
+  - lvdisplay – detailed information about each LV.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Formatting and Mounting the LV
+
+- Exit the LVM shell before mounting: exit.  
+- Create a mount directory:  
+  - mkdir /mnt/bm-lv-mount.
+- Create an ext4 filesystem on the logical volume:  
+  - mkfs.ext4 /dev/bm-vg/bm-lv.
+- Mount the filesystem:  
+  - mount /dev/bm-vg/bm-lv /mnt/bm-lv-mount.
+- Helpful checks:  
+  - df -h – shows mounted filesystems and usage.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Difference between “volume attach” and “volume mount”:
+
+- Volume attach: attach an EBS volume to an EC2 instance; at this point the OS 
+  can see the block device, but it is not yet usable as a filesystem.
+- Volume mount: after creating a filesystem, mounting makes the volume accessible 
+  under a directory so that files can be read and written.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Using LVM + EBS for Dynamic Storage
+
+- LVM with EBS enables dynamic storage management so logical volumes can be extended without downtime in many cases.
+- To extend an existing logical volume by 5G:  
+  - lvextend -L +5G /dev/bm-vg/bm-lv – increases bm-lv size by 5G.
+- After extending the LV, grow the filesystem (example for ext4):  
+  - resize2fs /dev/bm-vg/bm-lv – resizes the filesystem to use the new LV size.
+- Conceptual example:  
+  - PVs: 10G and 12G disks combined into a VG of 22G total.  
+  - LV: initially 10G, then extended by 5G to 15G using lvextend -L +5G /dev/bm-vg/bm-lv.
+
+---------------------------------------------------------------------------------------------------------------------------------------
