@@ -62,15 +62,20 @@ Converting EBS Volumes to LVM PVs
 Creating PVs, VG, and LV
 
 - Initialize attached disks as physical volumes:  
-  - pvcreate /dev/xvdf /dev/xvdg /dev/xvdh (example devices).
+  - pvcreate /dev/xvdf /dev/xvdg /dev/xvdh (created three physical volumes).
+
 - List physical volumes:  
-  - pvs – shows all PVs present.[6][8]
+  - pvs – shows all PVs present.
+
 - Create a volume group from PVs:  
-  - vgcreate bm-vg /dev/xvdf /dev/xvdg – creates VG bm-vg from two disks; total VG size is the sum of PV sizes.
+  - vgcreate bm-vg /dev/xvdf /dev/xvdg – creates Volume Group with name bm-vg from the two disks; total VG size is the sum of PV sizes.
+
 - List volume groups:  
   - vgs – lists all VGs.
+
 - Create a logical volume from the VG:  
   - lvcreate -L 10G -n bm-lv bm-vg – creates a 10G LV named bm-lv in VG bm-vg.
+
 - Display details:  
   - pvdisplay – detailed information about each PV.  
   - lvdisplay – detailed information about each LV.
@@ -80,12 +85,16 @@ Creating PVs, VG, and LV
 Formatting and Mounting the LV
 
 - Exit the LVM shell before mounting: exit.  
+
 - Create a mount directory:  
   - mkdir /mnt/bm-lv-mount.
+
 - Create an ext4 filesystem on the logical volume:  
   - mkfs.ext4 /dev/bm-vg/bm-lv.
+
 - Mount the filesystem:  
   - mount /dev/bm-vg/bm-lv /mnt/bm-lv-mount.
+
 - Helpful checks:  
   - df -h – shows mounted filesystems and usage.
 
@@ -95,6 +104,7 @@ Difference between “volume attach” and “volume mount”:
 
 - Volume attach: attach an EBS volume to an EC2 instance; at this point the OS 
   can see the block device, but it is not yet usable as a filesystem.
+
 - Volume mount: after creating a filesystem, mounting makes the volume accessible 
   under a directory so that files can be read and written.
 
