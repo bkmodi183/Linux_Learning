@@ -1,1 +1,12 @@
+1. grep 
 
+grep is a command-line utility used to search text using regular expressions.
+It prints lines from a file or input that match a given pattern, making it useful 
+or quickly filtering logs or text based on specific keywords or patterns.
+
+2. awk 
+
+awk is a more powerful command-line tool with programmable behavior. 
+It allows the use of conditions, comparisons, loops, and variables to process text
+in a structured way. With awk, logs and data can be filtered, analyzed, and formatted 
+in a more flexible and detailed manner compared to grep.
