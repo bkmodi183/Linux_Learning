@@ -36,7 +36,7 @@ Commands learnt so far:
 33. printenv -> this command will give all the envirnment varibales details.
 34. echo -e "hello\ndosto" -> it will print hello and dosto in two line \n denotes next line.
 35. echo -e "hello\tdosot" -> it will print hello and dost with a space between them. -e is envirnment.
-36. man zio -> Read about zip command, useful in backup
+36. man zip -> Read about zip command, useful in backup (sudo apt install zip)
 37. df -h -> Check disk space in Human-readable format
 38. top -> Monitor CPU, memory, real time running processes 
 39. ps -> List running processes and Can filter with grep to see specific process.
