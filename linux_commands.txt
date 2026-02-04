@@ -26,7 +26,7 @@ Commands learnt so far:
 25. cat /etc/passwd -> to see the user created
 26. cat /etc/group -> to see the groups created
 27. sudo groupadd <group-name> -> to create a new group
-28. sudo gpasswd <username> <groupname> -> Command is used to add a single user to a particular group
+28. sudo gpasswd -a <username> <groupname> -> Command is used to add a single user to a particular group
 29. sudo gpasswd -M <user1>,<user2>,...,<usern> <groupname> -> '-M' flag allows to add multiple user in a particular group at once.
 30. sudo usermod -aG <groupname> <username> -> Another way to append an existing user to a particular group.                             
     'a' flag means append the user and 'G' denotes group. Collectivty 'aG' denotes appends the user to the group G.
