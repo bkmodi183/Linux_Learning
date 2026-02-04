@@ -90,7 +90,7 @@
 (User–group relationships)
 
 * `sudo usermod -aG <groupname> <username>`
-* `sudo gpasswd <username> <groupname>` → Add single user
+* `sudo gpasswd -a <username> <groupname>` → Add single user
 * `sudo gpasswd -M user1,user2,user3 <groupname>` → Add multiple users
 
 ---
